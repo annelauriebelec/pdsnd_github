@@ -66,11 +66,11 @@ def time_stats(df):
 
     # TO DO: display the most common month
     df['month'] = df['Start Time'].dt.month
+    months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June"}
     popular_month = df['month'].value_counts().idxmax()
-    print('The most popular month is {}'.format(popular_month))
+    print('The most popular month is {}'.format(months.get(popular_month)))
 
     # TO DO: display the most common day of week
-    # df['day'] = df['Start Time'].dt.day
     popular_day = df['day_of_week'].value_counts().idxmax()
     days = {0: "Monday", 1: "Tuesday", 2: "Wednesday", 3:  "Thursday", 4: "Friday", 5: "Saturday", 6: "Sunday"}
     print('The most popular day is {}'.format(days.get(popular_day, "erreur")))
