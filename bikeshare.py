@@ -66,20 +66,20 @@ def time_stats(df):
 
     # Display the most common month
     df['month'] = df['Start Time'].dt.month
+    months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June"}
     popular_month = df['month'].value_counts().idxmax()
-    print('The most popular month is {}'.format(popular_month))
+    print('The most popular month is {}'.format(months.get(popular_month)))
 
     # Display the most common day of week
-    df['day'] = df['Start Time'].dt.day
-    popular_day = df['day'].value_counts().idxmax()
-    print('The most popular day is {}'.format(popular_day))
+    popular_day = df['day_of_week'].value_counts().idxmax()
+    days = {0: "Monday", 1: "Tuesday", 2: "Wednesday", 3:  "Thursday", 4: "Friday", 5: "Saturday", 6: "Sunday"}
+    print('The most popular day is {}'.format(days.get(popular_day, "erreur")))
 
     # Display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
     popular_hour = df['hour'].value_counts().idxmax()
     print('The most popular hour is {}h'.format(popular_hour))
           
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -147,7 +147,8 @@ def user_stats(df, city):
         recent_dob = int(df['Birth Year'].max())
         print('\nThe most recent year of birth is {}'.format(recent_dob)) 
         common_dob = int(df['Birth Year'].mode()[0])
-        print('\nThe most common year of birth is {}'.format(common_dob)) 
+        print('\nThe most common year of birth is {}'.format(common_dob))
+    else: print("\nGender and year of birth information are not available for Washington")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
