@@ -148,7 +148,8 @@ def user_stats(df, city):
         recent_dob = int(df['Birth Year'].max())
         print('\nThe most recent year of birth is {}'.format(recent_dob)) 
         common_dob = int(df['Birth Year'].mode()[0])
-        print('\nThe most common year of birth is {}'.format(common_dob)) 
+        print('\nThe most common year of birth is {}'.format(common_dob))
+    else: print("\nGender and year of birth information are not available for Washington")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
